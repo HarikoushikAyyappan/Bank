@@ -4,10 +4,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="customer")
-@SecondaryTable(name="account")
 public class Customer {
     @Id
-    @Column(updatable = false, nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="customerId")
     private int customerId;
     @Column(name="customerName")
     private String customerName;
@@ -25,77 +25,18 @@ public class Customer {
     private int availableLoans;
     @Column(name="loanEligibility")
     private int loanEligibility;
-    @Column(name="accntId")
+    @Column(name="accntId",insertable = false,updatable = false)
     private int accntId;
-    @Column(table="account")
-    private int accountId;
-    @Column(table="account")
-    private String accountType;
-    @Column(table="account")
-    private int accountDeposit;
-    @Column(table="account")
-    private float rateOfInterest;
-    @Column(table="account")
-    private int maturityAmount;
-    @Column(table="account")
-    private int withdrawalAmount;
-    @Column(table="account")
-    private int availableBalance;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "accntId", referencedColumnName = "accountId")
+    private Account account;
 
-    public int getAccountId() {
-        return accountId;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
-    }
-
-    public String getAccountType() {
-        return accountType;
-    }
-
-    public void setAccountType(String accountType) {
-        this.accountType = accountType;
-    }
-
-    public int getAccountDeposit() {
-        return accountDeposit;
-    }
-
-    public void setAccountDeposit(int accountDeposit) {
-        this.accountDeposit = accountDeposit;
-    }
-
-    public float getRateOfInterest() {
-        return rateOfInterest;
-    }
-
-    public void setRateOfInterest(float rateOfInterest) {
-        this.rateOfInterest = rateOfInterest;
-    }
-
-    public int getMaturityAmount() {
-        return maturityAmount;
-    }
-
-    public void setMaturityAmount(int maturityAmount) {
-        this.maturityAmount = maturityAmount;
-    }
-
-    public int getWithdrawalAmount() {
-        return withdrawalAmount;
-    }
-
-    public void setWithdrawalAmount(int withdrawalAmount) {
-        this.withdrawalAmount = withdrawalAmount;
-    }
-
-    public int getAvailableBalance() {
-        return availableBalance;
-    }
-
-    public void setAvailableBalance(int availableBalance) {
-        this.availableBalance = availableBalance;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public int getCustomerId() {
