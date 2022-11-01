@@ -1,14 +1,13 @@
 package com.bank.controller;
 
+import com.bank.model.Account;
 import com.bank.model.Customer;
 import com.bank.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -31,7 +30,7 @@ public class CustomerController {
         return modelAndView;
     }
     @RequestMapping("/customerPage")
-    public ModelAndView customerPage(@RequestParam int customerId, @RequestParam String password ){
+    public ModelAndView customerPage(@RequestParam int customerId, @RequestParam int password ){
         List<Customer> customerResult = userService.find(customerId,password);
         if(customerResult.isEmpty()){
             return new ModelAndView("errorPage");
@@ -41,6 +40,33 @@ public class CustomerController {
             mav.addObject("customerResult", customerResult);
             return mav;}
     }
-
+    @GetMapping(value = "/withdraw/{accountId}")
+    public ModelAndView withdraw(@PathVariable int accountId)  {
+        List<Account> accountDetails  = userService.getAccountDetails();
+        ModelAndView mav = new ModelAndView("withdraw");
+        mav.addObject("account",new Account());
+        mav.addObject("accountDetails", accountDetails);
+        return mav;
+    }
+    @RequestMapping("/getAmount")
+    public ModelAndView buy(@RequestParam int amount, @RequestParam int accountId,@RequestParam int availableBalance){
+        //List<Account> accountDetails = userService.getAccountDetails();
+        Customer customer = new Customer();
+        customer.setAccntId(accountId);
+        Account account = new Account();
+        account.setAccountId(accountId);
+        account.setWithdrawalAmount(amount);
+        account.setAvailableBalance(availableBalance);
+        account.setAvailableBalance(account.getAvailableBalance()-account.getWithdrawalAmount());
+        //accountDetails.add(6,account.getAvailableBalance());
+        //userService.updateAccount(accountId);
+        ModelAndView mav = new ModelAndView("buy");
+        mav.addObject("account",account);
+        return mav;}
+    @RequestMapping(value = "/store", method = RequestMethod.POST)
+    public ModelAndView savePerson(@ModelAttribute("account") Account account) {
+        userService.updateAccount(account);
+        return new ModelAndView("success");
+    }
     }
 

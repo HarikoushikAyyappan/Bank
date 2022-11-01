@@ -22,12 +22,18 @@
             <c:forEach items="${customerResult}" var="customer">
             <tr>
                 <td>${customer.customerId}</td>
-                <td>${customer.accountId}</td>
-                <td><a href="http://localhost:8080/Store/transactionList/${customer.customerId}/">viewOrders</a>
+                <td>${customer.accntId}</td>
+                <td><a href="http://localhost:8080/Bank/transactionList/${customer.customerId}/">viewTransactions</a>
                                                  &nbsp;&nbsp;&nbsp;
                 </td>
-              <td><a href="http://localhost:8080/Store/viewProfile/${customer.addressId}/">viewProfile</a>
+              <td><a href="http://localhost:8080/Bank/deposit/${customer.accntId}/">AccountDeposit</a>
                                                                  &nbsp;&nbsp;&nbsp;
+                  </td>
+              <td><a href="http://localhost:8080/Bank/withdraw/${customer.accntId}/">Amount Withdraw</a>
+                                                                               &nbsp;&nbsp;&nbsp;
+                  </td>
+              <td><a href="http://localhost:8080/Bank/applyloan/${customer.customerId}/">Apply Loan</a>
+                                                                                             &nbsp;&nbsp;&nbsp;
               </td>
             </tr>
             </c:forEach>

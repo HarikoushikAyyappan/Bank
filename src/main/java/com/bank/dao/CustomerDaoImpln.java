@@ -1,6 +1,8 @@
 package com.bank.dao;
 
+import com.bank.model.Account;
 import com.bank.model.Customer;
+import com.bank.repository.AccountDetails;
 import com.bank.repository.CustomerRepository;
 import com.bank.repository.LoginCustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +15,24 @@ public class CustomerDaoImpln implements CustomerDao{
     CustomerRepository customerRepository;
     @Autowired
      LoginCustomerRepository loginCustomer;
+    @Autowired
+    AccountDetails accountDetailsRepository;
     @Transactional
     public List<Customer> getAllCustomer(){
         return customerRepository.findAll();
     }
     @Transactional
-    public List<Customer> find(int customerId, String password) {
+    public List<Customer> find(int customerId, int password) {
         return loginCustomer.find(customerId,password);
     }
-}
+    @Transactional
+    public List<Account> getAccountDetails() {
+        return accountDetailsRepository.findAll();
+    }
+    @Transactional
+    public Account updateAccount(Account account){
+        return accountDetailsRepository.save(account);
+    }
+
+    }
+

@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface LoginCustomerRepository extends JpaRepository<Customer,Integer> {
     @Query(nativeQuery = false,value = "SELECT c FROM Customer c WHERE c.customerId=?1 AND c.password=?2")
-    List<Customer> find(@Param("customerId") int customerId, @Param("password") String password);
+    List<Customer> find(@Param("customerId") int customerId, @Param("password") int password);
 
 }
