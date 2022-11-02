@@ -23,7 +23,7 @@ public class UserServiceImpln implements UserService{
         return customerDao.getAccountDetails();
     }
    public Account updateAccount(Account account){
-        return customerDao.updateAccount( account);
+        return customerDao.updateAccount(account);
    }
 
 

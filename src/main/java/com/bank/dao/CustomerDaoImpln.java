@@ -15,8 +15,8 @@ public class CustomerDaoImpln implements CustomerDao{
     CustomerRepository customerRepository;
     @Autowired
      LoginCustomerRepository loginCustomer;
-    @Autowired
-    AccountDetails accountDetailsRepository;
+   @Autowired
+   AccountDetails accountDetailsRepository;
     @Transactional
     public List<Customer> getAllCustomer(){
         return customerRepository.findAll();

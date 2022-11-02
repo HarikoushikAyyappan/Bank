@@ -24,10 +24,9 @@
                       <td>${account.accountId}</td>
                       <td>${account.accountType}</td>
                       <td>${account.availableBalance}</td>
-                      <td><form method="get"  action="/Bank/getAmount/">
+                      <td><form method="post"  action="/Bank/getAmount?availableBalance=${account.availableBalance}">
                                              </br>EnterAmount  <input type="text" name="amount" /> &nbsp;
                                              </br>Enter AccountId <input type="text" name="accountId" /> &nbsp;
-                                             </br>Enter AvailableBalance <input type="text" name="availableBalance" /> &nbsp;
                                               <input type="submit"  value="get"/></form>
                                            </td>
                   </tr>

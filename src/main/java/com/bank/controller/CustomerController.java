@@ -49,7 +49,7 @@ public class CustomerController {
         return mav;
     }
     @RequestMapping("/getAmount")
-    public ModelAndView buy(@RequestParam int amount, @RequestParam int accountId,@RequestParam int availableBalance){
+    public ModelAndView buy(@RequestParam int amount, @RequestParam int accountId,@RequestParam("availableBalance") int availableBalance){
         //List<Account> accountDetails = userService.getAccountDetails();
         Customer customer = new Customer();
         customer.setAccntId(accountId);

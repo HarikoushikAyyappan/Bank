@@ -13,7 +13,7 @@
 <body>
 <div align="center">
     <h2>AvailableBalance</h2>
-    <form:form action="/Shop/store" method="post" modelAttribute="account">
+    <form:form action="/Bank/store" method="post" modelAttribute="account">
     <table border="1" cellpadding="5">
                   <tr>
                       <th>AccountId</th>
@@ -28,9 +28,13 @@
                     <td>${account.availableBalance}
                                             <form:hidden path="availableBalance"/>
                     </td>
+                    <td></br>Enter AccountId <input type="text" name="accountId" /> &nbsp;
+                                                                      <input type="submit"  value="post"/></form>
+
                 </tr>
               </table>
               </form:form>
+
                <a href="http://localhost:8080/Bank">Home</a>
     </div>
     </body>

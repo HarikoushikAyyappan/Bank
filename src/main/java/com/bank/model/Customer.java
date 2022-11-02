@@ -1,6 +1,7 @@
 package com.bank.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="customer")
@@ -30,6 +31,21 @@ public class Customer {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "accntId", referencedColumnName = "accountId")
     private Account account;
+    @OneToMany(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
+    @JoinTable(
+            name="customer",
+            joinColumns = @JoinColumn(name="customerId"),
+            inverseJoinColumns = @JoinColumn(name="loanId")
+    )
+    private List<Loan> loanList;
+
+    public List<Loan> getLoanList() {
+        return loanList;
+    }
+
+    public void setLoanList(List<Loan> loanList) {
+        this.loanList = loanList;
+    }
 
     public Account getAccount() {
         return account;
