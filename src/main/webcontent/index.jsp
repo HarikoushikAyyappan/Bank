@@ -20,6 +20,8 @@
              </br>Admin login   <input type="submit"  value="Login"/></form>
              <form method="get"  action="/Bank/newCustomer">
                      </br>CustomerRegistration   <input type="submit"  value="Register"/></form>
+             <form method="get"  action="/Bank/officerLogin">
+                     </br>Admin login   <input type="submit"  value="Login"/></form>
 </div>
 </body>
 </html>

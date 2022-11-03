@@ -1,5 +1,7 @@
 package com.bank.model;
 import javax.persistence.*;
+import java.util.List;
+import java.sql.Blob;
 
 @Entity
 @Table(name="account")
@@ -23,16 +25,24 @@ public class Account {
     @Column(name="custId")
     private int custId;
 
-    @OneToOne(mappedBy = "account")
-    private Customer customer;
 
-    public Customer getCustomer() {
-        return customer;
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinTable(
+            name = "account",
+            joinColumns = @JoinColumn(name="account_accountId"),
+            inverseJoinColumns = @JoinColumn(name="loan_loanId")
+    )
+    public List<Loan> loanList;
+
+    public List<Loan> getLoanList() {
+        return loanList;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setLoanList(List<Loan> loanList) {
+        this.loanList = loanList;
     }
+
+
 
     public int getCustId() {
         return custId;

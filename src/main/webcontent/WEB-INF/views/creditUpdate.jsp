@@ -1,0 +1,55 @@
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+    Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Person List</title>
+</head>
+<body>
+<div align="center">
+    <h2>AvailableBalance</h2>
+    <form:form action="/Bank/save" method="post" modelAttribute="account">
+    <table border="1" cellpadding="5">
+                  <tr>
+                      <th>AccountId</th>
+                      <th>AccountType</th>
+                      <th>AccountDeposit</th>
+                      <th>RateOfInterest</th>
+                      <th>CreditedAmount</th>
+                      <th>WithdrawalAmount</th>
+                      <th>AvailableBalance</th>
+
+
+                  </tr>
+                    <tr>
+                    <td>${account.accountId}
+                        <form:hidden path="accountId"/>
+                        <td>${account.accountType}
+                     <form:hidden path="accountType"/>
+                     <td>${account.accountDeposit}
+                      <form:hidden path="accountDeposit"/>
+                      <td>${account.rateOfInterest}
+                           <form:hidden path="rateOfInterest"/>
+                        <td>${account.maturityAmount}
+                       <form:hidden path="maturityAmount"/>
+                         <td>${account.withdrawalAmount}
+                         <form:hidden path="withdrawalAmount"/>
+                    <td>${account.availableBalance}
+                          <form:hidden path="availableBalance"/>
+                    </td>
+                    <td></br>Enter AccountId <input type="text" name="accountId" /> &nbsp;
+                                                                      <input type="submit"  value="post"/></form>
+
+                </tr>
+              </table>
+              </form:form>
+
+               <a href="http://localhost:8080/Bank">Home</a>
+    </div>
+    </body>
+</html>

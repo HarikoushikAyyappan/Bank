@@ -2,9 +2,9 @@ package com.bank.dao;
 
 import com.bank.model.Account;
 import com.bank.model.Customer;
-import com.bank.repository.AccountDetails;
-import com.bank.repository.CustomerRepository;
-import com.bank.repository.LoginCustomerRepository;
+import com.bank.model.Loan;
+import com.bank.model.Officer;
+import com.bank.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +17,10 @@ public class CustomerDaoImpln implements CustomerDao{
      LoginCustomerRepository loginCustomer;
    @Autowired
    AccountDetails accountDetailsRepository;
+   @Autowired
+    OfficerRepository officerRepository;
+   @Autowired
+    LoanRepository loanRepository;
     @Transactional
     public List<Customer> getAllCustomer(){
         return customerRepository.findAll();
@@ -33,6 +37,19 @@ public class CustomerDaoImpln implements CustomerDao{
     public Account updateAccount(Account account){
         return accountDetailsRepository.save(account);
     }
+    @Transactional
+    public List<Officer> search(int officerId, String password) {
+        return officerRepository.search(officerId,password);
+    }
+    @Transactional
+    public List<Loan> getAllLoans(){
+        return loanRepository.findAll();
+    }
+    @Transactional
+    public void delete(int uniqueId){
+         loanRepository.delete(uniqueId);
+    }
+
 
     }
 

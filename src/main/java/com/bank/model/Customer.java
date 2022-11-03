@@ -29,9 +29,9 @@ public class Customer {
     @Column(name="accntId",insertable = false,updatable = false)
     private int accntId;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "accntId", referencedColumnName = "accountId")
+    @JoinColumn(name = "customerId", referencedColumnName = "accountId")
     private Account account;
-    @OneToMany(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
+    @OneToMany(cascade=CascadeType.ALL)
     @JoinTable(
             name="customer",
             joinColumns = @JoinColumn(name="customerId"),
