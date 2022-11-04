@@ -24,13 +24,22 @@ public class Account {
     private int availableBalance;
     @Column(name="custId")
     private int custId;
+    @OneToOne(targetEntity = Customer.class)
+    private Customer customer;
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     @OneToMany(cascade=CascadeType.ALL)
     @JoinTable(
-            name = "account",
-            joinColumns = @JoinColumn(name="account_accountId"),
-            inverseJoinColumns = @JoinColumn(name="loan_loanId")
+            name = "loan",
+            joinColumns = @JoinColumn(name="loan_accountId")
+           // inverseJoinColumns = @JoinColumn(name="loan_loanId")
     )
     public List<Loan> loanList;
 

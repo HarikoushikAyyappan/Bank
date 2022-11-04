@@ -37,7 +37,7 @@
                       <td><form method="post"  action="/Bank/credit?availableBalance=${account.availableBalance}">
                                              </br>EnterAmount  <input type="text" name="amount" /> &nbsp;
                                              </br>Enter AccountId <input type="text" name="accountId" /> &nbsp;
-                                             </br>Enter LoanId <input type="text" name="uniqueId" /> &nbsp;
+                                             </br>Enter LoanId <input type="text" name="loanId" /> &nbsp;
                                               <input type="submit"  value="get"/></form>
                                            </td>
                   </tr>

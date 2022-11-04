@@ -35,8 +35,11 @@ public class UserServiceImpln implements UserService{
     }
 
 
-    public void delete(int uniqueId) {
-        customerDao.delete(uniqueId);
+    public void delete(int loanId) {
+        customerDao.delete(loanId);
+    }
+    public Loan updateLoan(Loan loan){
+        return customerDao.updateLoan(loan);
     }
 }
 

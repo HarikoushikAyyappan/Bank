@@ -12,8 +12,17 @@ public class Loan {
     private int loanId;
     @Column(name="loanAmount")
     private int loanAmount;
-    @Column(name="accountId")
-    private int accountId;
+    @Column(name="acntId")
+    private int acntId;
+
+    public int getAcntId() {
+        return acntId;
+    }
+
+    public void setAcntId(int acntId) {
+        this.acntId = acntId;
+    }
+
     @Column(name="uniqueId")
     private int uniqueId;
 
@@ -25,13 +34,6 @@ public class Loan {
         this.uniqueId = uniqueId;
     }
 
-    public int getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
-    }
 
     public int getLoanId() {
         return loanId;

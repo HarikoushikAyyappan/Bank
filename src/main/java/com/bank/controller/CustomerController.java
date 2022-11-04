@@ -28,7 +28,9 @@ public class CustomerController {
     @RequestMapping("/customerLogin")
     public ModelAndView newCustomerForm() {
         ModelAndView modelAndView = new ModelAndView("customerLoginPage");
-        modelAndView.addObject("customer",new Customer());
+        Customer customer = new Customer();
+        customer.setAccount(new Account());
+        modelAndView.addObject("customer",customer);
         return modelAndView;
     }
     @RequestMapping("/customerPage")
@@ -54,7 +56,7 @@ public class CustomerController {
     public ModelAndView buy(@RequestParam int amount, @RequestParam int accountId,@RequestParam("availableBalance") int availableBalance){
         //List<Account> accountDetails = userService.getAccountDetails();
         Customer customer = new Customer();
-        customer.setAccntId(accountId);
+      //  customer.setAccntId(accountId);
         Account account = new Account();
         account.setAccountId(accountId);
         account.setWithdrawalAmount(amount);
@@ -106,10 +108,10 @@ public class CustomerController {
         return mav;
     }
     @RequestMapping("/credit")
-    public ModelAndView credit(@RequestParam int amount, @RequestParam int accountId,@RequestParam("availableBalance") int availableBalance,@RequestParam("uniqueId") int uniqueId){
+    public ModelAndView credit(@RequestParam int amount, @RequestParam int accountId,@RequestParam("availableBalance") int availableBalance,@RequestParam("loanId") int loanId){
         //List<Account> accountDetails = userService.getAccountDetails();
         Customer customer = new Customer();
-        customer.setAccntId(accountId);
+      //  customer.setAccntId(accountId);
         Account account = new Account();
         account.setAccountId(accountId);
         account.setMaturityAmount(amount);
@@ -119,11 +121,24 @@ public class CustomerController {
         //userService.updateAccount(accountId);
         ModelAndView mav = new ModelAndView("creditUpdate");
         mav.addObject("account",account);
-        //userService.delete(uniqueId);
+         userService.delete(loanId);
+            System.out.println("success");
+
         return mav;}
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public ModelAndView save(@ModelAttribute("account") Account account) {
         userService.updateAccount(account);
+        return new ModelAndView("success");
+    }
+    @RequestMapping(value ="applyloan/{customerId}")
+    public ModelAndView newLoan(@PathVariable int customerId){
+        ModelAndView modelAndView = new ModelAndView("newLoan");
+        modelAndView.addObject("loan",new Loan());
+        return modelAndView;
+    }
+    @RequestMapping(value = "/loanApplication", method = RequestMethod.POST)
+    public ModelAndView saveLoan(@ModelAttribute("loan") Loan loan) {
+        userService.updateLoan(loan);
         return new ModelAndView("success");
     }
     }

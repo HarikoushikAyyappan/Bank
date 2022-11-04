@@ -17,7 +17,8 @@ public interface UserService {
     Account updateAccount(Account account);
     List<Officer> search(int officerId, String password);
     List<Loan> getAllLoans();
-    void delete(int uniqueId);
+    void delete(int loanId);
+    Loan updateLoan(Loan loan);
 
 
 

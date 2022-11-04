@@ -23,9 +23,9 @@
                   <tr>
                       <td>${loan.loanId}</td>
                       <td>${loan.loanAmount}</td>
-                      <td>${loan.accountId}</td>
+                      <td>${loan.acntId}</td>
                       <td>
-                         <a href="http://localhost:8080/Bank/approve/${loan.accountId}/">Approve</a>
+                         <a href="http://localhost:8080/Bank/approve/${loan.acntId}/">Approve</a>
                              &nbsp;&nbsp;&nbsp;
            </td>
                   </tr>

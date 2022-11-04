@@ -8,6 +8,7 @@ import java.util.List;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @PrimaryKeyJoinColumn
     @Column(name="customerId")
     private int customerId;
     @Column(name="customerName")
@@ -26,16 +27,24 @@ public class Customer {
     private int availableLoans;
     @Column(name="loanEligibility")
     private int loanEligibility;
-    @Column(name="accntId",insertable = false,updatable = false)
+    @Column(name="accntId",insertable = false ,updatable = false)
     private int accntId;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customerId", referencedColumnName = "accountId")
+
+    public int getAccntId() {
+        return accntId;
+    }
+
+    public void setAccntId(int accntId) {
+        this.accntId = accntId;
+    }
+
+    @OneToOne(targetEntity = Account.class,cascade = CascadeType.ALL)
     private Account account;
     @OneToMany(cascade=CascadeType.ALL)
     @JoinTable(
             name="customer",
-            joinColumns = @JoinColumn(name="customerId"),
-            inverseJoinColumns = @JoinColumn(name="loanId")
+            joinColumns = @JoinColumn(name="loanId")
+          //  inverseJoinColumns = @JoinColumn(name="loanId")
     )
     private List<Loan> loanList;
 
@@ -127,11 +136,4 @@ public class Customer {
         this.loanEligibility = loanEligibility;
     }
 
-    public int getAccntId() {
-        return accntId;
-    }
-
-    public void setAccntId(int accntId) {
-        this.accntId = accntId;
-    }
 }

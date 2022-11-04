@@ -46,8 +46,12 @@ public class CustomerDaoImpln implements CustomerDao{
         return loanRepository.findAll();
     }
     @Transactional
-    public void delete(int uniqueId){
-         loanRepository.delete(uniqueId);
+    public void delete(int loanId){
+         loanRepository.deleteById(loanId);
+    }
+    @Transactional
+    public Loan updateLoan(Loan loan){
+        return loanRepository.save(loan);
     }
 
 
