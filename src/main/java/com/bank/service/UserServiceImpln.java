@@ -1,18 +1,18 @@
 package com.bank.service;
 
 import com.bank.dao.CustomerDao;
-import com.bank.model.Account;
-import com.bank.model.Customer;
-import com.bank.model.Loan;
-import com.bank.model.Officer;
+import com.bank.model.*;;
+import com.bank.repository.AccountPracticeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
-
 import java.util.List;
 
 public class UserServiceImpln implements UserService{
     @Autowired
     CustomerDao customerDao;
+    @Autowired
+    AccountPracticeRepository acnt;
+
     public List<Customer> getAllCustomer(){
 
         return customerDao.getAllCustomer();
@@ -41,7 +41,12 @@ public class UserServiceImpln implements UserService{
     public Loan updateLoan(Loan loan){
         return customerDao.updateLoan(loan);
     }
-}
+
+    public List<AccountPractice> getAll(){
+     return acnt.findAll();
+    }
+    }
+
 
 
 

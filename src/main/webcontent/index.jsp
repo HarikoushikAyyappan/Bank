@@ -22,6 +22,8 @@
                      </br>CustomerRegistration   <input type="submit"  value="Register"/></form>
              <form method="get"  action="/Bank/officerLogin">
                      </br>Admin login   <input type="submit"  value="Login"/></form>
+                      <form method="get"  action="/Bank/get">
+                             </br>get    <input type="submit"  value="get"/></form>
 </div>
 </body>
 </html>
