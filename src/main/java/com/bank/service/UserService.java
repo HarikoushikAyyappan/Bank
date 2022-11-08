@@ -2,9 +2,10 @@ package com.bank.service;
 
 import com.bank.model.*;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public interface UserService {
     List <Customer> getAllCustomer();
@@ -16,7 +17,7 @@ public interface UserService {
     List<Loan> getAllLoans();
     void delete(int loanId);
     Loan updateLoan(Loan loan);
-    List<AccountPractice> getAll();
+    AccountPractice getAll(int accountId);
 
 
 

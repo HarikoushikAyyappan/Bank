@@ -18,24 +18,18 @@
                       <th>Id</th>
                       <th>Amount</th>
                       <th>CustomerId</th>
-                      <th>Name</th>
+                      <th>CustomerName</th>
+
                   </tr>
-                  <c:forEach items="${accountPractice}" var="person">
+
                   <tr>
-                      <td>${person.accountId}</td>
-                      <td>${person.amount}</td>
-
+                  <td><c:out value="${accountPractice.accountId}" /></td>
+                  <td><c:out value="${accountPractice.amount}" /></td>
+                  <td><c:out value="${accountPractice.customerPractice.customerId}" /></td>
+                  <td><c:out value="${accountPractice.customerPractice.name}" /></td>
                   </tr>
-                  </c:forEach>
-                  <c:forEach items="${account.customer}" var="acnt">
-                   <tr>
-                   <td>${acnt.customerId}</td>
-                       <td>${acnt.name}</td>
-                 </tr>
-                  </c:forEach>
-
               </table>
-              <a href="http://localhost:8080/Shop">Home</a>
+              <a href="http://localhost:8080/Bank">Home</a>
     </div>
     </body>
     </html>

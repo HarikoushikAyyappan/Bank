@@ -11,14 +11,14 @@ public class AccountPractice {
     @Column(name="amount")
     private int amount;
 @ManyToOne
-private Customer customer;
+private CustomerPractice customerPractice;
 
-    public Customer getCustomer() {
-        return customer;
+    public CustomerPractice getCustomerPractice() {
+        return customerPractice;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomerPractice(CustomerPractice customerPractice) {
+        this.customerPractice = customerPractice;
     }
 
     public int getAccountId() {
