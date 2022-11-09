@@ -53,6 +53,14 @@ public class CustomerDaoImpln implements CustomerDao{
     public Loan updateLoan(Loan loan){
         return loanRepository.save(loan);
     }
+    @Transactional
+    public Customer getCustomerById(int customerId){
+        return customerRepository.findById(customerId).get();
+    }
+    @Transactional
+    public Account getAccountById(int accountId){
+        return accountDetailsRepository.findById(accountId).get();
+    }
 
 
     }

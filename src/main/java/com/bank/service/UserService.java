@@ -18,6 +18,8 @@ public interface UserService {
     void delete(int loanId);
     Loan updateLoan(Loan loan);
     AccountPractice getAll(int accountId);
+    Customer getCustomerById(int customerId);
+    Account getAccountById(int accountId);
 
 
 

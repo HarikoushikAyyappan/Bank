@@ -141,5 +141,20 @@ public class CustomerController {
         userService.updateLoan(loan);
         return new ModelAndView("success");
     }
+    @GetMapping(value = "/deposit/{customerId}")
+    public ModelAndView deposit(@PathVariable int customerId){
+        Customer customer = userService.getCustomerById(customerId);
+        ModelAndView mav = new ModelAndView("deposit");
+        mav.addObject("customer",customer);
+        return mav;
+    }
+    @RequestMapping(value = "/retain")
+    public ModelAndView saveCustomer(@RequestParam("accountId") int accountId,@RequestParam("deposit") int deposit) {
+        Account account= userService.getAccountById(accountId);
+        account.setAccountDeposit(deposit);
+        account.setAvailableBalance(account.getAvailableBalance()+account.getAccountDeposit());
+        userService.updateAccount(account);
+       return new ModelAndView("done");
+    }
     }
 

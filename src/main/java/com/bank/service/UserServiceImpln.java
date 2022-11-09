@@ -46,6 +46,12 @@ public class UserServiceImpln implements UserService{
     public AccountPractice getAll(int accountId){
      return acnt.findById(accountId).get();
     }
+    public Customer getCustomerById(int customerId){
+        return customerDao.getCustomerById(customerId);
+    }
+    public Account getAccountById(int accountId){
+        return customerDao.getAccountById(accountId);
+    }
     }
 
 

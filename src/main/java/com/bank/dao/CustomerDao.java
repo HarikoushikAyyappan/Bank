@@ -18,5 +18,8 @@ public interface CustomerDao {
     public List<Loan> getAllLoans();
     void delete(int loanId);
     Loan updateLoan(Loan loan);
+    Customer getCustomerById(int customerId);
+    Account getAccountById(int accountId);
+
 
 }

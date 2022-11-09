@@ -26,7 +26,7 @@
                 <td><a href="http://localhost:8080/Bank/transactionList/${customer.customerId}/">viewTransactions</a>
                                                  &nbsp;&nbsp;&nbsp;
                 </td>
-              <td><a href="http://localhost:8080/Bank/deposit/${customer.accntId}/">AccountDeposit</a>
+              <td><a href="http://localhost:8080/Bank/deposit/${customer.customerId}/">AccountDeposit</a>
                                                                  &nbsp;&nbsp;&nbsp;
                   </td>
               <td><a href="http://localhost:8080/Bank/withdraw/${customer.accntId}/">Amount Withdraw</a>
