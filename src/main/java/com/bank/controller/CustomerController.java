@@ -16,7 +16,7 @@ import java.util.List;
 public class CustomerController {
     @Autowired
     UserService userService;
-    @GetMapping(value = "/customers")
+    @RequestMapping(value = "/customers")
         public ModelAndView home() {
             List<Customer > customerList  = userService.getAllCustomer();
             Customer customer = new Customer();
@@ -26,7 +26,7 @@ public class CustomerController {
             return mav;
         }
     @RequestMapping("/customerLogin")
-    public ModelAndView newCustomerForm() {
+    public ModelAndView newCustomerFor() {
         ModelAndView modelAndView = new ModelAndView("customerLoginPage");
         Customer customer = new Customer();
         customer.setAccount(new Account());
@@ -44,7 +44,7 @@ public class CustomerController {
             mav.addObject("customerResult", customerResult);
             return mav;}
     }
-    @GetMapping(value = "/withdraw/{accountId}")
+    @RequestMapping(value = "/withdraw/{accountId}")
     public ModelAndView withdraw(@PathVariable int accountId)  {
         List<Account> accountDetails  = userService.getAccountDetails();
         ModelAndView mav = new ModelAndView("withdraw");
@@ -99,7 +99,7 @@ public class CustomerController {
         mav.addObject("loanList", loanList);
         return mav;
     }
-    @GetMapping(value = "/approve/{accountId}")
+    @RequestMapping(value = "/approve/{accountId}")
     public ModelAndView approve(@PathVariable int accountId)  {
         List<Account> accountDetails  = userService.getAccountDetails();
         ModelAndView mav = new ModelAndView("approval");
@@ -141,7 +141,7 @@ public class CustomerController {
         userService.updateLoan(loan);
         return new ModelAndView("success");
     }
-    @GetMapping(value = "/deposit/{customerId}")
+    @RequestMapping(value = "/deposit/{customerId}")
     public ModelAndView deposit(@PathVariable int customerId){
         Customer customer = userService.getCustomerById(customerId);
         ModelAndView mav = new ModelAndView("deposit");
@@ -155,6 +155,11 @@ public class CustomerController {
         account.setAvailableBalance(account.getAvailableBalance()+account.getAccountDeposit());
         userService.updateAccount(account);
        return new ModelAndView("done");
+    }
+    @RequestMapping(value = "/downloadExcel", method = RequestMethod.GET)
+    public ModelAndView downloadExcel() {
+        List<Customer > customerList  = userService.getAllCustomer();
+        return new ModelAndView("excelView", "listCustomer", customerList);
     }
     }
 
