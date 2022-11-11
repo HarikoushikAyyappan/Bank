@@ -4,10 +4,11 @@ import com.bank.dao.CustomerDao;
 import com.bank.model.*;;
 import com.bank.repository.AccountPracticeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service("userService")
 public class UserServiceImpln implements UserService{
     @Autowired
     CustomerDao customerDao;
@@ -51,6 +52,9 @@ public class UserServiceImpln implements UserService{
     }
     public Account getAccountById(int accountId){
         return customerDao.getAccountById(accountId);
+    }
+    public Customer save(Customer uploadFile){
+        return customerDao.save(uploadFile);
     }
     }
 

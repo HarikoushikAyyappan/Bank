@@ -20,6 +20,7 @@ public interface CustomerDao {
     Loan updateLoan(Loan loan);
     Customer getCustomerById(int customerId);
     Account getAccountById(int accountId);
+    Customer save(Customer uploadFile);
 
 
 }

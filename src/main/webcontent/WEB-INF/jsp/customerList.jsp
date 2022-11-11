@@ -29,7 +29,7 @@
                   </tr>
                   </c:forEach>
               </table>
-              <h3><a href="/downloadExcel">Download Excel Document</a></h3>
+              <h3><a href="http://localhost:8080/Bank/download">Download Excel Document</a></h3>
               <a href="http://localhost:8080/Bank">Home</a>
     </div>
     </body>

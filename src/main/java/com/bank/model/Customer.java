@@ -29,6 +29,26 @@ public class Customer {
     private int loanEligibility;
     @Column(name="accntId",insertable = false ,updatable = false)
     private int accntId;
+    @Column(name="fileName")
+    private String fileName;
+    @Column(name="data")
+    private byte[] data;
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
 
     public int getAccntId() {
         return accntId;

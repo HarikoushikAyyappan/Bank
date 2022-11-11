@@ -6,13 +6,17 @@ import com.bank.model.Loan;
 import com.bank.model.Officer;
 import com.bank.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+
+@Controller
 public class CustomerController {
     @Autowired
     UserService userService;
@@ -156,10 +160,27 @@ public class CustomerController {
         userService.updateAccount(account);
        return new ModelAndView("done");
     }
-    @RequestMapping(value = "/downloadExcel", method = RequestMethod.GET)
-    public ModelAndView downloadExcel() {
-        List<Customer > customerList  = userService.getAllCustomer();
-        return new ModelAndView("excelView", "listCustomer", customerList);
+    @RequestMapping(value ="/upload")
+    public ModelAndView upload(){
+        return new ModelAndView("upload");
     }
+    public String handleFileUpload(HttpServletRequest request,
+                                   @RequestParam CommonsMultipartFile[] fileUpload) throws Exception {
+
+        if (fileUpload != null && fileUpload.length > 0) {
+            for (CommonsMultipartFile aFile : fileUpload){
+
+                System.out.println("Saving file: " + aFile.getOriginalFilename());
+
+                Customer uploadFile = new Customer();
+                uploadFile.setFileName(aFile.getOriginalFilename());
+                uploadFile.setData(aFile.getBytes());
+                userService.save(uploadFile);
+            }
+        }
+
+        return "Success";
     }
+
+}
 

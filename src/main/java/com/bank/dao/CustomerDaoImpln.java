@@ -61,6 +61,10 @@ public class CustomerDaoImpln implements CustomerDao{
     public Account getAccountById(int accountId){
         return accountDetailsRepository.findById(accountId).get();
     }
+    @Transactional
+    public Customer save(Customer uploadFile){
+        return customerRepository.save(uploadFile);
+    }
 
 
     }

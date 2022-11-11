@@ -31,6 +31,8 @@
             </br>List    <input type="submit"  value="List Of Customers"/></form>
      <form method="get"  action="/Bank/approveLoan">
         </br>Approve    <input type="submit"  value="Approve Loan"/></form>
+        <form method="get"  action="/Bank/upload">
+                     </br>Upload   <input type="submit"  value="upload"/></form>
 </div>
 </body>
 </html>

@@ -20,6 +20,7 @@ public interface UserService {
     AccountPractice getAll(int accountId);
     Customer getCustomerById(int customerId);
     Account getAccountById(int accountId);
+     Customer save(Customer uploadFile);
 
 
 
